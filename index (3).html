@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Share Your Experience — Carter Fence Company</title>
+<meta name="description" content="Tell us about your experience with Carter Fence Company of Naples, Florida." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:        #0E2A2E;
+    --navy-soft:   #1a3d42;
+    --cream:       #F6F1E6;
+    --cream-deep:  #EDE5D2;
+    --gold:        #C9A24A;
+    --gold-deep:   #A8842F;
+    --rust:        #B5512A;
+    --ink:         #0a1e21;
+    --muted:       #5d6f72;
+    --line:        rgba(14,42,46,.12);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+
+  body{
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 38px,
+        rgba(14,42,46,.035) 38px,
+        rgba(14,42,46,.035) 39px,
+        transparent 39px,
+        transparent 78px
+      );
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* ===== Top bar ===== */
+  header.topbar{
+    padding: 22px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    background: rgba(246,241,230,.85);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top:0;
+    z-index: 10;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:var(--navy);
+  }
+  .brand-mark{
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: var(--navy);
+    display:grid;
+    place-items:center;
+    color: var(--gold);
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size: 20px;
+    letter-spacing:-0.5px;
+  }
+  .brand-name{
+    font-family:'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    line-height:1;
+  }
+  .brand-sub{
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-top: 4px;
+  }
+
+  .top-meta{
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+  .top-meta strong{ color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px){ .top-meta{ display:none; } }
+
+  /* ===== Main layout ===== */
+  main{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px 64px;
+    position: relative;
+  }
+
+  .card{
+    width: 100%;
+    max-width: 720px;
+    background: #FFFDF7;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 56px 56px 48px;
+    box-shadow:
+      0 1px 0 rgba(14,42,46,.04),
+      0 30px 60px -30px rgba(14,42,46,.18);
+    position: relative;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    border: 1px solid rgba(201,162,74,.25);
+    border-radius: 4px;
+    transform: translate(8px,8px);
+    z-index:-1;
+    pointer-events:none;
+  }
+
+  @media (max-width: 600px){
+    .card{ padding: 36px 24px 32px; }
+    main{ padding: 24px 16px 40px; }
+  }
+
+  .eyebrow{
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    margin: 0 0 18px;
+    display:flex;
+    align-items:center;
+    gap: 12px;
+  }
+  .eyebrow::after{
+    content:"";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(to right, var(--gold), transparent);
+    max-width: 80px;
+  }
+
+  h1.headline{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 5.2vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: 0 0 20px;
+  }
+  h1.headline em{
+    font-style: italic;
+    color: var(--rust);
+    font-weight: 400;
+  }
+
+  p.lede{
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--muted);
+    margin: 0 0 36px;
+    max-width: 56ch;
+  }
+
+  /* ===== Step machine ===== */
+  .step{ display:none; animation: fadeUp .5s ease both; }
+  .step.active{ display:block; }
+  @keyframes fadeUp {
+    from{ opacity:0; transform: translateY(10px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* ===== Buttons ===== */
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 28px;
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    box-shadow: 0 6px 16px -8px rgba(14,42,46,.4);
+  }
+  .btn:hover{
+    background: var(--navy-soft);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px -10px rgba(14,42,46,.5);
+  }
+  .btn:active{ transform: translateY(0); }
+  .btn .arrow{
+    transition: transform .25s ease;
+    display: inline-block;
+  }
+  .btn:hover .arrow{ transform: translateX(4px); }
+
+  .btn-secondary{
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    box-shadow: none;
+  }
+  .btn-secondary:hover{
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  .btn-gold{
+    background: var(--gold-deep);
+    color: #fff;
+  }
+  .btn-gold:hover{ background: #8d6d22; }
+
+  /* ===== Step 1: intro ===== */
+  .quick-meta{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 36px;
+    margin: 36px 0 8px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .quick-meta div strong{
+    display:block;
+    color: var(--navy);
+    font-family:'Fraunces', serif;
+    font-size: 18px;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* ===== Step 2: rating ===== */
+  .rating-prompt{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: 0 0 12px;
+  }
+  .rating-sub{
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 36px;
+  }
+
+  .scale{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 600px){
+    .scale{ gap: 8px; }
+  }
+
+  .scale button{
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--line);
+    background: #FFFDF7;
+    color: #c9c2b0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .18s ease;
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 0;
+  }
+  .scale button svg{
+    width: 60%;
+    height: 60%;
+    transition: transform .18s ease;
+  }
+  .scale button:hover{
+    background: var(--cream-deep);
+    color: var(--gold-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px -8px rgba(14,42,46,.3);
+  }
+  .scale button:hover svg{ transform: scale(1.1); }
+  .scale button.is-selected{
+    background: var(--gold-deep);
+    color: #fff;
+    border-color: var(--gold-deep);
+  }
+  .scale button .star-num{
+    position: absolute;
+    bottom: 6px;
+    right: 8px;
+    font-family:'Fraunces', serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+  .scale button.is-selected .star-num{ color: #fff; opacity: 0.85; }
+
+  .scale-labels{
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 36px;
+  }
+
+  /* ===== Step 3: feedback ===== */
+  .feedback-rating-pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: var(--cream-deep);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 20px;
+  }
+  .feedback-rating-pill strong{
+    font-family:'Fraunces', serif;
+    font-size: 16px;
+    color: var(--rust);
+  }
+
+  textarea{
+    width: 100%;
+    min-height: 160px;
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #FFFDF7;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    resize: vertical;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  textarea:focus{
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(14,42,46,.08);
+  }
+  textarea::placeholder{ color: #99a5a8; }
+
+  .field-row{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  @media (max-width: 600px){ .field-row{ grid-template-columns: 1fr; } }
+
+  input[type="text"], input[type="email"]{
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #FFFDF7;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  input:focus{
+    outline: none;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px rgba(14,42,46,.08);
+  }
+  input::placeholder{ color: #99a5a8; }
+
+  .actions{
+    display:flex;
+    gap: 12px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  /* ===== Step 4: redirect (perfect score) ===== */
+  .celebrate{
+    text-align: center;
+    padding: 12px 0 8px;
+  }
+  .celebrate .stars{
+    font-family:'Fraunces', serif;
+    color: var(--gold-deep);
+    font-size: 44px;
+    letter-spacing: 8px;
+    margin-bottom: 16px;
+    animation: pop .6s cubic-bezier(.2,1.4,.5,1) both;
+  }
+  @keyframes pop {
+    from{ transform: scale(.6); opacity:0; }
+    to{ transform: scale(1); opacity:1; }
+  }
+  .celebrate h2{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: 0 0 16px;
+  }
+  .celebrate p{
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0 auto 32px;
+    max-width: 48ch;
+  }
+
+  .google-card{
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 24px;
+    margin: 0 auto 28px;
+    max-width: 460px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .google-card .gicon{
+    width: 44px; height: 44px;
+    background: #fff;
+    border-radius: 50%;
+    display:grid;
+    place-items: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  }
+  .google-card .gtext{ flex: 1; }
+  .google-card .gtext strong{
+    display:block;
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .google-card .gtext span{
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ===== Step 5: thank you ===== */
+  .thanks{ text-align: center; padding: 12px 0; }
+  .thanks .check{
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--gold);
+    display:grid;
+    place-items: center;
+    margin: 0 auto 24px;
+    font-size: 28px;
+    animation: pop .5s cubic-bezier(.2,1.4,.5,1) both;
+  }
+  .thanks h2{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: 0 0 14px;
+  }
+  .thanks p{
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0 auto;
+    max-width: 44ch;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    padding: 24px 32px;
+    border-top: 1px solid var(--line);
+    background: var(--cream);
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  footer a{ color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover{ border-color: var(--navy); }
+
+  /* ===== Decorative ornament ===== */
+  .ornament{
+    position: absolute;
+    font-family:'Fraunces', serif;
+    color: var(--cream-deep);
+    font-size: 280px;
+    line-height: 1;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    font-weight: 400;
+    font-style: italic;
+  }
+  .ornament-tl{ top: 60px; left: -40px; }
+  .ornament-br{ bottom: 60px; right: -40px; transform: rotate(180deg); }
+  @media (max-width: 900px){ .ornament{ display: none; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#">
+    <div class="brand-mark">C</div>
+    <div>
+      <div class="brand-name">Carter Fence Company</div>
+      <div class="brand-sub">Naples · Southwest Florida</div>
+    </div>
+  </a>
+  <div class="top-meta">
+    Customer <strong>Feedback</strong>
+  </div>
+</header>
+
+<main>
+  <div class="ornament ornament-tl">"</div>
+  <div class="ornament ornament-br">"</div>
+
+  <div class="card">
+
+    <!-- ============ STEP 1: INTRO ============ -->
+    <section class="step active" data-step="intro">
+      <p class="eyebrow">A quick favor</p>
+      <h1 class="headline">How did we do, <em>really?</em></h1>
+      <p class="lede">
+        Thanks for choosing Carter Fence Company. Your honest feedback helps us hold the line on quality &mdash; and helps the next homeowner in Southwest Florida find a fencing crew they can trust.
+      </p>
+
+      <button class="btn" id="startBtn">
+        Start the survey <span class="arrow">→</span>
+      </button>
+
+      <div class="quick-meta">
+        <div>Takes about<strong>30 seconds</strong></div>
+        <div>Just<strong>2 questions</strong></div>
+        <div>Submitted to<strong>The Carter team</strong></div>
+      </div>
+    </section>
+
+    <!-- ============ STEP 2: RATING ============ -->
+    <section class="step" data-step="rating">
+      <p class="eyebrow">Question 1 of 2</p>
+      <h2 class="rating-prompt">How would you rate your experience with us?</h2>
+      <p class="rating-sub">Tap a star below — same scale as Google.</p>
+
+      <div class="scale" id="scale">
+        <button data-value="1" aria-label="1 star">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="star-num">1</span>
+        </button>
+        <button data-value="2" aria-label="2 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="star-num">2</span>
+        </button>
+        <button data-value="3" aria-label="3 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="star-num">3</span>
+        </button>
+        <button data-value="4" aria-label="4 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="star-num">4</span>
+        </button>
+        <button data-value="5" aria-label="5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span class="star-num">5</span>
+        </button>
+      </div>
+      <div class="scale-labels">
+        <span>Poor</span>
+        <span>Excellent</span>
+      </div>
+    </section>
+
+    <!-- ============ STEP 3: FEEDBACK (rating < 5) ============ -->
+    <section class="step" data-step="feedback">
+      <p class="eyebrow">Question 2 of 2</p>
+      <div class="feedback-rating-pill">You rated us <strong id="ratingDisplay">—</strong> / 5</div>
+      <h2 class="rating-prompt">How can we improve?</h2>
+      <p class="rating-sub">Be candid. Whatever fell short, we want to hear it.</p>
+
+      <textarea id="feedbackText" placeholder="Tell us what we could have done better — communication, scheduling, install quality, anything at all."></textarea>
+
+      <div class="field-row">
+        <input type="text" id="custName" placeholder="Your name (optional)" />
+        <input type="email" id="custEmail" placeholder="Email or phone (optional)" />
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="submitFeedback">
+          Send to Carter Fence <span class="arrow">→</span>
+        </button>
+        <button class="btn btn-secondary" id="backToRating">Change rating</button>
+      </div>
+    </section>
+
+    <!-- ============ STEP 4: 10/10 GOOGLE REVIEW ============ -->
+    <section class="step" data-step="celebrate">
+      <div class="celebrate">
+        <div class="stars">★★★★★</div>
+        <h2>That made our day.</h2>
+        <p>Would you share that 10 on Google? It takes 20 seconds and it genuinely helps our small Naples team keep growing.</p>
+
+        <div class="google-card">
+          <div class="gicon">
+            <svg width="22" height="22" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z"/>
+              <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 18.9 12 24 12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+              <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+              <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41.4 35.7 44 30.3 44 24c0-1.3-.1-2.3-.4-3.5z"/>
+            </svg>
+          </div>
+          <div class="gtext">
+            <strong>Leave a Google review</strong>
+            <span>Carter Fence Company · Naples, FL</span>
+          </div>
+        </div>
+
+        <div class="actions" style="justify-content:center;">
+          <a class="btn btn-gold" id="googleReviewBtn" href="#" target="_blank" rel="noopener">
+            Open Google Review <span class="arrow">→</span>
+          </a>
+          <button class="btn btn-secondary" id="skipReview">Maybe later</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STEP 5: THANKS ============ -->
+    <section class="step" data-step="thanks">
+      <div class="thanks">
+        <div class="check">✓</div>
+        <h2>Thank you.</h2>
+        <p>We've got your feedback and the Carter Fence team will read every word. We appreciate you taking the time.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <strong>Carter Fence Company</strong> · 3490 Shearwater St, Naples, FL 34117 ·
+  <a href="tel:+12393534102">(239) 353-4102</a> ·
+  <a href="https://carter-fence.com" target="_blank" rel="noopener">carter-fence.com</a>
+</footer>
+
+<script>
+  // ===== Configuration =====
+  // Google Maps deep-link to the business so the customer can leave a review.
+  // This URL opens the Carter Fence Google Maps listing where the "Write a review" button is one tap away.
+  const GOOGLE_REVIEW_URL = "https://g.page/r/Cfm3K8Q_YRReEAE/review";
+
+  // ===== Step machine =====
+  const steps = document.querySelectorAll('.step');
+  const goTo = (name) => {
+    steps.forEach(s => s.classList.toggle('active', s.dataset.step === name));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  let currentRating = null;
+
+  // Step 1 -> Step 2
+  document.getElementById('startBtn').addEventListener('click', () => goTo('rating'));
+
+  // Step 2: rating selection
+  const scaleButtons = document.querySelectorAll('#scale button');
+  scaleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      scaleButtons.forEach(b => b.classList.remove('is-selected'));
+      btn.classList.add('is-selected');
+      currentRating = parseInt(btn.dataset.value, 10);
+
+      // Small delay so the user sees their selection register
+      setTimeout(() => {
+        if (currentRating === 5) {
+          // Set up Google review button and go to celebrate screen
+          document.getElementById('googleReviewBtn').setAttribute('href', GOOGLE_REVIEW_URL);
+          goTo('celebrate');
+        } else {
+          document.getElementById('ratingDisplay').textContent = currentRating;
+          goTo('feedback');
+        }
+      }, 280);
+    });
+  });
+
+  // Step 3: feedback submission
+  document.getElementById('backToRating').addEventListener('click', () => goTo('rating'));
+  document.getElementById('submitFeedback').addEventListener('click', () => {
+    const feedback = document.getElementById('feedbackText').value.trim();
+    const name = document.getElementById('custName').value.trim();
+    const email = document.getElementById('custEmail').value.trim();
+
+    if (!feedback) {
+      const ta = document.getElementById('feedbackText');
+      ta.focus();
+      ta.style.borderColor = 'var(--rust)';
+      ta.style.boxShadow = '0 0 0 3px rgba(181,81,42,.12)';
+      return;
+    }
+
+    // ====================================================================
+    // BACKEND HOOK — wire this up to email, a Google Sheet, Airtable,
+    // Formspree, or any endpoint you want. Right now it just logs.
+    // ====================================================================
+    const payload = {
+      rating: currentRating,
+      feedback,
+      name: name || null,
+      contact: email || null,
+      submittedAt: new Date().toISOString(),
+      source: 'survey-landing'
+    };
+    console.log('Survey submission:', payload);
+
+    // Example: send to your endpoint
+    // fetch('/api/survey', { method: 'POST', body: JSON.stringify(payload) });
+
+    goTo('thanks');
+  });
+
+  // Step 4: skip review
+  document.getElementById('skipReview').addEventListener('click', () => {
+    // Log the 5/5 even if they skip the review
+    console.log('Survey submission:', { rating: 5, feedback: null, submittedAt: new Date().toISOString() });
+    goTo('thanks');
+  });
+
+  // When they tap the Google review button, also count it as submitted
+  document.getElementById('googleReviewBtn').addEventListener('click', () => {
+    console.log('Survey submission:', { rating: 5, redirectedToGoogle: true, submittedAt: new Date().toISOString() });
+    // Show the thanks screen behind it so when they come back from Google it's already friendly
+    setTimeout(() => goTo('thanks'), 400);
+  });
+</script>
+
+</body>
+</html>
